@@ -19,4 +19,10 @@ describe("SummaryForm", () => {
     fireEvent.click(checkbox);
     expect(button).toBeEnabled();
   });
+
+  test("unchecking checkbox again disables button", () => {
+    fireEvent.click(checkbox);
+    fireEvent.click(checkbox);
+    expect(button).toBeDisabled();
+  });
 });
