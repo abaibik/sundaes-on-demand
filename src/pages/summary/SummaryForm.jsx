@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 export default function SummaryForm() {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const handleClick = () => {
-    buttonDisabled ? setButtonDisabled(false) : setButtonDisabled(true);
+    setButtonDisabled((current) => !current);
   };
   return (
     <Form>
