@@ -7,6 +7,10 @@ describe("SummaryForm", () => {
 
   let checkbox;
   let button;
+  let termsAndConditions;
+  let nullPopover;
+  let popover;
+
   beforeEach(() => {
     render(<SummaryForm />);
     checkbox = screen.getByRole("checkbox", {
@@ -29,5 +33,25 @@ describe("SummaryForm", () => {
     await user.click(checkbox);
     await user.click(checkbox);
     expect(button).toBeDisabled();
+  });
+
+  test("popower responds to hover", async () => {
+    nullPopover = screen.queryByText(
+      /no ice cream will actually be delivered/i
+    );
+
+    expect(nullPopover).not.toBeInTheDocument();
+
+    termsAndConditions = screen.getByText(/terms and conditions/i);
+
+    await user.hover(termsAndConditions);
+
+    popover = screen.getByText(/no ice cream will actually be delivered/i);
+
+    expect(popover).toBeInTheDocument();
+
+    await user.unhover(termsAndConditions);
+
+    expect(popover).not.toBeInTheDocument();
   });
 });
