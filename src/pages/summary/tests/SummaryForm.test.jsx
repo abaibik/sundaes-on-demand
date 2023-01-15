@@ -6,8 +6,10 @@ describe("SummaryForm", () => {
   let button;
   beforeEach(() => {
     render(<SummaryForm />);
-    checkbox = screen.getByRole("checkbox");
-    button = screen.getByRole("button");
+    checkbox = screen.getByRole("checkbox", {
+      name: "I agree to Terms and Conditions",
+    });
+    button = screen.getByRole("button", { name: "Confirm Order" });
   });
 
   test("checkbox is unchecked by default", () => {
