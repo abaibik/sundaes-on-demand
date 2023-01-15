@@ -1,7 +1,10 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import SummaryForm from "../SummaryForm";
+import userEvent from "@testing-library/user-event";
 
 describe("SummaryForm", () => {
+  const user = userEvent.setup();
+
   let checkbox;
   let button;
   beforeEach(() => {
@@ -16,15 +19,15 @@ describe("SummaryForm", () => {
     expect(checkbox).not.toBeChecked();
   });
 
-  test("checking checkbox enables button", () => {
+  test("checking checkbox enables button", async () => {
     expect(button).toBeDisabled();
-    fireEvent.click(checkbox);
+    await user.click(checkbox);
     expect(button).toBeEnabled();
   });
 
-  test("unchecking checkbox again disables button", () => {
-    fireEvent.click(checkbox);
-    fireEvent.click(checkbox);
+  test("unchecking checkbox again disables button", async () => {
+    await user.click(checkbox);
+    await user.click(checkbox);
     expect(button).toBeDisabled();
   });
 });
