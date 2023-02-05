@@ -47,7 +47,7 @@ export function OrderDetailsProvider(props) {
     toppings: calculateTotal("toppings"),
   };
 
-  const value = { optionCounts, updateItemCount, resetOrder };
+  const value = { optionCounts, updateItemCount, resetOrder, totals };
 
   return <OrderDetails.Provider value={value} {...props} />;
 }

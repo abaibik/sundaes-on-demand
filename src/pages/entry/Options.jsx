@@ -38,14 +38,14 @@ export default function Options({ optionType }) {
     />
   ));
 
-  return;
-  // eslint-disable-next-line no-unreachable
-  <>
-    <h2>{title}</h2>
-    <p>{formatCurrency(pricePerItem[optionType])} each</p>
-    <p>
-      {title} total: {formatCurrency(totals[optionType])}
-    </p>
-    <Row>{optionItems}</Row>;
-  </>;
+  return (
+    <>
+      <h2>{title}</h2>
+      <p>{formatCurrency(pricePerItem[optionType])} each</p>
+      <p>
+        {title} total: {formatCurrency(totals[optionType])}
+      </p>
+      <Row>{optionItems}</Row>;
+    </>
+  );
 }
