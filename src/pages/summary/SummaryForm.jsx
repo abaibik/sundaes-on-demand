@@ -3,8 +3,15 @@ import { Button, Form, FormGroup } from "react-bootstrap";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 
-export default function SummaryForm() {
+export default function SummaryForm({ setOrderPhase }) {
   const [termsChecked, settermsChecked] = useState(false);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    setOrderPhase("completed");
+  }
+
   const handleClick = (e) => {
     settermsChecked(e.target.checked);
   };
@@ -25,7 +32,7 @@ export default function SummaryForm() {
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <FormGroup controlId="formCheck">
         <Form.Check
           checked={termsChecked}
